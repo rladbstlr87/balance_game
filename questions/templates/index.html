@@ -2,6 +2,7 @@
 
 {% block body %}
     <h1>Questions</h1>
+    <hr>
     {% for article in articles %}
         <p>{{article.title}}</p>
         <a href="{% url 'questions:detail' article.id %}">link</a>

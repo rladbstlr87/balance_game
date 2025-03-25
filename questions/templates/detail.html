@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="d-flex justify-content-center">
+    <div class="card mx-4" style="width: 18rem; position: relative;">
+        <div class="card-body btn btn-primary">
+            <h5 class="card-subtitle text-body-secondary">{{article.title}}</h5>
+            <h6 class="card-title mb-2 fs-2">{{article.A}}</h6>
+        </div>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-warning">
+            +{{count_A}} 
+            <span class="visually-hidden">A 선택 댓글 작성자 수</span>
+        </span>  
+    </div>
+
+    <div class="card mx-4" style="width: 18rem; position: relative;">
+        <div class="card-body btn btn-danger">
+            <h5 class="card-subtitle text-body-secondary">{{article.title}}</h5>
+            <h6 class="card-title mb-2 fs-2">{{article.B}}</h6>
+        </div>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-warning">
+            +{{count_B}} 
+            <span class="visually-hidden">B 선택 댓글 작성자 수</span>
+        </span>  
+    </div>
+</div>
+
+
+
+
+    <hr>
+    <form action="{% url 'questions:comment_create' article.id %}" method="POST">
+        {% csrf_token %}
+        {{form.AB}}
+        {{form.content}}
+        <input type="submit" class="btn btn-primary mt-3">
+    </form>
+    <hr>
+    <h1>Answers</h1>
+
+    {% for comment in comments %}
+    <div class="card mb-3 {% if comment.AB == 'A' %}bg-primary text-white{% else %}bg-danger text-white{% endif %}">
+        <div class="card-body">
+            <li>{{comment.AB}} - {{comment.content}}</li>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

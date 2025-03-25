@@ -11,12 +11,6 @@
 ---
 7. 앱폴더 `questions`폴더에도 urls.py 만들어서 중복되는 함수 최소화(이중구조)
 ---
-8. 앱폴더에 urls.py 추가하고 아래 문장 기재
-```py
-urlpatterns = [
-    path('', views.index),
-]
-```
 9. 번역작업
 ```shell
 python manage.py makemigrations
@@ -46,6 +40,11 @@ python manage.py runserver
 ```py
 from django.urls import path
 from . import views
+
+urlpatterns = [
+    path('', views.index),
+]
+```
 ```
 ---
 큰 종이에 베이스 -> 그 안에 인덱스 -> 인덱스에 게시글 전체 불러오기 -> 

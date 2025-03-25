@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1>Questions</h1>
+    {% for article in articles %}
+        <p>{{article.title}}</p>
+        <a href="{% url 'questions:detail' article.id %}">link</a>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

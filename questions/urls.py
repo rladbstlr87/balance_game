@@ -1,5 +1,12 @@
 from django.urls import path
+from . import views
+
+app_name = 'questions'
 
 urlpatterns = [
-    path('', views.index),
+    # C
+    path('create/', views.create, name='create'),
+
+    path('', views.index, name='index'),
+
 ]

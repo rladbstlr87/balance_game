@@ -65,5 +65,3 @@ def random_page(request):
     articles = Article.objects.all()
     article = random.choice(articles)
     return redirect('questions:detail', id=article.id)
-
-from .forms import CommentForm
